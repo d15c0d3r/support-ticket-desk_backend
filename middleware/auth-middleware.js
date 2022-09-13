@@ -3,11 +3,12 @@ const firebase = require("../firebase/index");
 function authMiddleware(request, response, next) {
   const headerToken = request.headers.authorization;
   let url = request.url.split("/");
-  // console.log(request);
+  console.log(request.url);
   if (
-    url[2] == "tickets" &&
-    request.method === "POST" &&
-    request.body.customerEmail
+    (url[2] === "tickets" &&
+      request.method === "POST" &&
+      request.body.customerEmail) ||
+    (url[2] === "orgs" && request.method === "GET")
   ) {
     next();
   } else {
