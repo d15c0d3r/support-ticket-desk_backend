@@ -8,6 +8,7 @@ const getUserByEmail = async (req, res) => {
   const {
     body: { email },
   } = req;
+  console.log(req.body);
   try {
     const userData = await user.findUnique({
       where: {

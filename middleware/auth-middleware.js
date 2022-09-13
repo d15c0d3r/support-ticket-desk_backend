@@ -8,9 +8,10 @@ function authMiddleware(request, response, next) {
     (url[2] === "tickets" &&
       request.method === "POST" &&
       request.body.customerEmail) ||
-    (url[2] === "orgs" && request.method === "GET")
+    (url[2] === "orgs" && request.method === "GET" && url.length === 4)
   ) {
     next();
+    console.log("first if");
   } else {
     if (!headerToken) {
       return response.send({ message: "No token provided" }).status(401);
