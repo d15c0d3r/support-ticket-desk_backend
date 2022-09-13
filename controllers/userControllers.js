@@ -76,7 +76,7 @@ const postUserByOrgIdAndEmail = async (req, res) => {
       sgMail
         .send(msg)
         .then((result) => {
-          console.log(result);
+          console.log("result then block", result);
           return res.send({ message: "user created!" });
         })
         .catch((error) => {

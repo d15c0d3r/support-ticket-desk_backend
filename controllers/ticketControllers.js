@@ -145,7 +145,7 @@ const getTicketsForInsightsbyOrgId = async (req, res) => {
         if (ticket.resolvedAt) {
           totalResolvedTickets += 1;
           sumSLA +=
-            (ticket.resolvedAt.getTime() - ticket.createdAt.getTime()) / minute;
+            (ticket.resolvedAt.getTime() - ticket.createdAt.getTime()) / hour;
           if (tickets[ticket.resolvedAt]) {
             tickets[ticket.resolvedAt] = {
               ...tickets[ticket.resolvedAt],
