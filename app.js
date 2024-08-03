@@ -9,10 +9,13 @@ const orgRouter = require("./routes/organization");
 const userRouter = require("./routes/user");
 const ticketRouter = require("./routes/ticket");
 const customerRouter = require("./routes/customer");
+const healthRouter = require("./routes/health");
+
+const authMiddleware = require("./middleware/auth-middleware");
 
 var app = express();
 
-const authMiddleware = require("./middleware/auth-middleware");
+app.use(cors());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -25,10 +28,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 //middleware
-app.use(cors());
 app.use("/", authMiddleware);
 
 //use Routes
+app.use("/health", healthRouter);
 app.use("/apis/orgs", orgRouter);
 app.use("/apis/orgs/:orgId/users", userRouter);
 app.use("/apis/orgs/:orgId/tickets", ticketRouter);

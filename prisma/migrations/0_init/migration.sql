@@ -41,6 +41,7 @@ CREATE TABLE "Tickets" (
     "status" "Status" NOT NULL DEFAULT 'OPEN',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "resolvedAt" TIMESTAMP(3),
 
     CONSTRAINT "Tickets_pkey" PRIMARY KEY ("id")
 );
@@ -74,3 +75,4 @@ ALTER TABLE "Tickets" ADD CONSTRAINT "Tickets_ownerId_fkey" FOREIGN KEY ("ownerI
 
 -- AddForeignKey
 ALTER TABLE "Tickets" ADD CONSTRAINT "Tickets_customerId_fkey" FOREIGN KEY ("customerId") REFERENCES "Customers"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
